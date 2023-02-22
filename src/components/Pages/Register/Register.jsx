@@ -37,7 +37,7 @@ const userData = {
   profile:profileImage ,
   role:role , 
 }
-fetch("https://link-shortner-five.vercel.app/users" , {
+fetch("https://mitly.vercel.app/users" , {
   method:"POST" ,
   headers:{
   'content-type' : 'application/json' , 

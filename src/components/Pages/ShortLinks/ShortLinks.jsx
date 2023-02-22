@@ -19,7 +19,7 @@ const ShortLinks = () => {
     const navigate = useNavigate();
     //get the data 
     React.useEffect(() => {
-        fetch(`https://link-shortner-five.vercel.app/shortLinks?email=${user?.email}`, {
+        fetch(`https://mitly.vercel.app/shortLinks?email=${user?.email}`, {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("link-shortner")}`,
@@ -52,7 +52,7 @@ const ShortLinks = () => {
     //deleteUrl
     const deleteUrl = (id) => {
         console.log(id);
-        fetch(`https://link-shortner-five.vercel.app/shortLinks/${id}`, {
+        fetch(`https://mitly.vercel.app/shortLinks/${id}`, {
             method: "DELETE",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("link-shortner")} `
@@ -101,7 +101,7 @@ const ShortLinks = () => {
                                     <th>{i + 1}</th>
                                     <td>{data?.origUrl ? data?.origUrl?.length > 50 ? data?.origUrl.slice(0, 49) + "..." : data?.origUrl : "url not found"}</td>
                                     <td>{data?.shortUrl ? data?.shortUrl : "short url not found"}</td>
-                                    <td title='Url visited'>{data?.clicks}</td>
+                                    <td title={`Total ${data?.clicks} times url visited !!`}>{data?.clicks}</td>
                                     <td>{data?.time ? data?.time : "00/00/00" }</td>
                                     <td>{data?.month ? data?.month : "00/00/00"}</td>
                                     <td><BsTrash className='text-red-600 text-2xl hover:cursor-pointer'

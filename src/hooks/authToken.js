@@ -3,7 +3,7 @@ const authToken = (email) => {
 const currentUser = {
 email:email , 
 }
-fetch(`https://link-shortner-five.vercel.app/jwt` , {
+fetch(`https://mitly.vercel.app/jwt` , {
 method:"POST" ,
 headers:{
 "Content-Type" : "application/json"

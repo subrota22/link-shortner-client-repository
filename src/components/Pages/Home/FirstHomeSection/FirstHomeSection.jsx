@@ -23,7 +23,7 @@ const FirstHomeSection = () => {
         setLoadingRequest(true);
         setCopyCheck(false);
         //submit form 
-        fetch(`https://link-shortner-five.vercel.app/shortLinks`, {
+        fetch(`https://mitly.vercel.app/shortLinks`, {
             method: "post",
             headers: {
                 "content-type": "application/json",
