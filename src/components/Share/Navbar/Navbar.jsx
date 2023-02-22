@@ -15,7 +15,7 @@ const Navbar = () => {
             user.uid && <>
                 <li><NavLink to="/">Home</NavLink></li>
                 <li><NavLink to="/short-links">Short links </NavLink></li>
-                <li><button onClick={() => accountLogOut()} className='btn bg-red-400 text-white mx-2 text-lg py-2'> Log Out </button></li>
+                <li><button onClick={() => accountLogOut()} className='btn bg-red-400 text-white mx-8 text-md py-4 '> Log Out </button></li>
             </>
         }
         <> {

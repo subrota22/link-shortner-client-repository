@@ -4,7 +4,7 @@ import logo from "../../../assets/link-shortner.png" ;
 const Footer = () => {
     return (
         <>
-            <footer className="footer p-10 bg-base-200 text-base-content">
+            <footer className="footer p-10 bg-base-200 text-base-content shadow-lg">
                 <div>
                 <img src={logo} alt="logo" className='w-14 rounded-full'/>
                     <p>Learn with fun.<br />Providing reliable tech since 2020</p>

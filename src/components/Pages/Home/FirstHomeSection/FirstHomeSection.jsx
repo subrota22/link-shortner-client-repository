@@ -44,7 +44,7 @@ const FirstHomeSection = () => {
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content justify-between flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left ml-9">
-                        <h1 className="text-3xl font-bold w-full"> Short url now !! </h1>
+                        <h1 className="text-3xl font-bold w-full"> Short your url now !! </h1>
                         <p className="py-6  font-bold w-80">Enter your full url in the input feild <br /> 
                         and than click on short url button to get your short url.
                         After get the link click on copy icon to copy your url.</p>
@@ -67,7 +67,7 @@ const FirstHomeSection = () => {
                                 <input type="url" name='url' onChange={handleChangeFeild} placeholder="Enter your full url link here" className="input input-bordered border-info" required />
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-info text-white"> {
+                                <button className="btn btn-success text-white font-bold"> {
                                     loadingRequest ? <BeatLoader color="white" /> : " Short url"
                                 } </button>
                             </div>
