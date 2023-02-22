@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { BsTrash } from 'react-icons/bs';
@@ -8,18 +9,20 @@ import DeleteConformation from '../../Share/DeleteConformation/DeleteConformatio
 import errorDeleteMessage from '../../Share/deleteMessage/errorDeleteMessage';
 import successDeleteMessage from '../../Share/deleteMessage/successDeleteMessage';
 import PageLoader from '../../Share/PageLoader/PageLoader';
-
+import { FiExternalLink } from "react-icons/fi";
 const ShortLinks = () => {
     const [loadingData, setLoadingData] = useState(true);
     const [data, setData] = useState([]);
     const [modalData, setmodalData] = useState();
     const [showModal, setShowModal] = useState(false);
-    console.log(data);
     const { user } = useContext(AuthProvider);
     const navigate = useNavigate();
-    //get the data 
-    React.useEffect(() => {
-        fetch(`https://mitly.vercel.app/shortLinks?email=${user?.email}`, {
+
+
+    //get the data using transtack query
+    useQuery({
+        queryKey: [user?.email],
+        queryFn: () => fetch(`https://mitly.vercel.app/shortLinks?email=${user?.email}`, {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem("link-shortner")}`,
@@ -36,11 +39,8 @@ const ShortLinks = () => {
                 setLoadingData(false);
                 setData(data);
             })
-            .catch(error => console.log(error));
-    }, [user?.email, navigate]);
-    if (loadingData) {
-        return <PageLoader></PageLoader>
-    }
+            .catch(error => console.log(error))
+    })
 
     //set data 
     const passData = (reciveData) => {
@@ -51,7 +51,7 @@ const ShortLinks = () => {
 
     //deleteUrl
     const deleteUrl = (id) => {
-        console.log(id);
+
         fetch(`https://mitly.vercel.app/shortLinks/${id}`, {
             method: "DELETE",
             headers: {
@@ -75,6 +75,11 @@ const ShortLinks = () => {
             }).catch(error => errorDeleteMessage(error))
 
     }
+    //page loading
+    if (loadingData) {
+        return <PageLoader></PageLoader>
+    }
+
     return (
         <>
             <Helmet><title>Short links </title></Helmet>
@@ -100,9 +105,16 @@ const ShortLinks = () => {
                                 <tr key={data?._id} className="text-start">
                                     <th>{i + 1}</th>
                                     <td>{data?.origUrl ? data?.origUrl?.length > 50 ? data?.origUrl.slice(0, 49) + "..." : data?.origUrl : "url not found"}</td>
-                                    <td>{data?.shortUrl ? data?.shortUrl : "short url not found"}</td>
+                                    <td> 
+                                    <a href={data?.shortUrl} target="_blank" rel="noopener noreferrer">
+                                        {data?.shortUrl ?
+                                            <>
+                                         <div className="flex justify-around"> {data?.shortUrl} <FiExternalLink></FiExternalLink> </div> 
+                                            </>
+                                            : "short url not found"} </a>
+                                      </td>
                                     <td title={`Total ${data?.clicks} times url visited !!`}>{data?.clicks}</td>
-                                    <td>{data?.time ? data?.time : "00/00/00" }</td>
+                                    <td>{data?.time ? data?.time : "00/00/00"}</td>
                                     <td>{data?.month ? data?.month : "00/00/00"}</td>
                                     <td><BsTrash className='text-red-600 text-2xl hover:cursor-pointer'
                                         onClick={() => passData(data)}></BsTrash></td>
@@ -121,6 +133,8 @@ const ShortLinks = () => {
             }
 
             {
+                //show the modal for delete conformation 
+
                 data?.length !== 0 && <>
 
                     <>

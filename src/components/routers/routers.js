@@ -26,7 +26,7 @@ export const routers = createBrowserRouter([
                 path:"/reset-password", element:<ResetPassword></ResetPassword>
             } ,
             {
-                path: "*", element: <h2 className="text-white text-center text-5xl">Page not found </h2>
+                path: "*", element: <img src="https://i.ibb.co/d2spdYt/Page-Not-Found.webp" alt="page not found" className="h-sreen w-full" />
             }
         ]
     }
