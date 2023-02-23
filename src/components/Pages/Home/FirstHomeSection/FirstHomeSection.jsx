@@ -64,7 +64,7 @@ const FirstHomeSection = () => {
                                 <label className="label">
                                     <span className="label-text"> URL  </span>
                                 </label>
-                                <input type="url" name='url' onChange={handleChangeFeild} placeholder="Enter your full url link here" className="input input-bordered border-info" required />
+                                <input type="url" name='url' onChange={handleChangeFeild} placeholder="Enter your full link here" className="input input-bordered border-info" required />
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-success text-white font-bold"> {

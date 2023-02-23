@@ -18,7 +18,7 @@ code {
 
 body::-webkit-scrollbar{
 width: 14px;
-background-color: rgba(0, 0, 0, 0.555);
+background-color: rgba(192, 12, 138, 0.2);
 }
 body::-webkit-scrollbar-thumb{
   width: 14px;

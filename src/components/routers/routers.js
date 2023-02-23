@@ -8,6 +8,7 @@ import ResetPassword from "../Pages/ResetPassword/ResetPassword";
 import ShortLinks from "../Pages/ShortLinks/ShortLinks";
 
 export const routers = createBrowserRouter([
+   { path:"/", errorElement:<h2 className="text-5xl my-44 text-center text-red-600 font-extrabold"> You have an error !! </h2> , children:[
     {
         path: "/", element: <MainLayout></MainLayout>, children: [
             {
@@ -30,5 +31,7 @@ export const routers = createBrowserRouter([
             }
         ]
     }
+  ] 
+   }
 ]);
 
